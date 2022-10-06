@@ -19,19 +19,54 @@ function viewResults() {
 // 	}
 // });
 
+let objectCounterFirstPage  = {
+	counter : 0
+}
+
+// let objectCounterFirstPage  = [];
+
+let objectCounterSecondPage  = {
+	counter : 0
+}
+let objectCounterThirdPage  = {
+	counter : 0
+}
+
+
 let firstPageVisitsCount = document.getElementById("visit-count1");
 let secondPageVisitsCount = document.getElementById("visit-count2");
 let thirdPageVisitsCount = document.getElementById("visit-count3");
 
-// console.log(secondPageVisitsCount);
-// console.log(firstPageVisitsCount);
+// objectCounterFirstPage.counter += 1;
+function changeObj(obj) {
+	
+	obj.counter += 21
+	return obj
+}
 
 
-addEventListener('pageshow', (e) => {
-	if (firstPageVisitsCount != null){
-		firstPageVisitsCount.innerHTML = "Vlad"
-	}
-});
+
+addEventListener('pageshow', changeObj(objectCounterFirstPage));
+
+console.log(objectCounterFirstPage.counter)
+
+
+//   Listener bazovui
+// addEventListener('pageshow', (e) => {
+// 	if (firstPageVisitsCount != null){
+// 		// firstPageVisitsCount.innerHTML = "Vlad"
+// 		objectCounterFirstPage.counter += 1;
+// 		// console.log(objectCounterFirstPage.counter)
+// 		// return objectCounterFirstPage.counter;
+// 	}
+// 	// console.log(objectCounterFirstPage.counter)
+// 	// objectCounterFirstPage.counter += 1;
+// 	return objectCounterFirstPage.counter;
+// });
+
+
+// console.log(objectCounterFirstPage);
+
 addEventListener('pageshow', (e) => {
 	if (secondPageVisitsCount != null){
 		// console.log("Vlad")
