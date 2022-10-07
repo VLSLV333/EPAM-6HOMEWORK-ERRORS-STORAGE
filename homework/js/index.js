@@ -1,6 +1,22 @@
-function visitLink(path) {
-	//your code goes here
+function visitLink() {
+	let firstPageVisitsCount = document.getElementById("visit-count1");
+	let secondPageVisitsCount = document.getElementById("visit-count2");
+	let thirdPageVisitsCount = document.getElementById("visit-count3");	
+	if (firstPageVisitsCount != null){
+		let storageUpdate = JSON.parse(localStorage.getItem("visits-first-page")) || {counter : 0};
+		storageUpdate.counter += 1;
+		localStorage.setItem("visits-first-page" ,JSON.stringify(storageUpdate))
+	} else if (secondPageVisitsCount != null){
+		let storageUpdate = JSON.parse(localStorage.getItem("visits-second-page")) || {counter : 0};
+		storageUpdate.counter += 1;
+		localStorage.setItem("visits-second-page" ,JSON.stringify(storageUpdate))
+	} else if (thirdPageVisitsCount != null){
+		let storageUpdate = JSON.parse(localStorage.getItem("visits-third-page")) || {counter : 0};
+		storageUpdate.counter += 1;
+		localStorage.setItem("visits-third-page" ,JSON.stringify(storageUpdate))
+	}
 }
+addEventListener('pageshow', visitLink());
 
 function viewResults() {
 	//your code goes here
@@ -8,47 +24,28 @@ function viewResults() {
 
 // localStorage.clear();
 
-// let storageSupportedCheck = window.sessionStorage && window.localStorage ? "is" : "is not";
-// console.log(`Storage API ${storageSupportedCheck} supported.`)
-
-// addEventListener('pageshow', (event) => {console.log("You have visited this page!") });
-
-// addEventListener('pageshow', (event) => {
-// 	for (let i = 0; i < 4; i++){
-// 		localStorage.setItem(`this is main page ${i}`, `count : ${i}`)
-// 	}
-// });
-
-let objectCounterFirstPage  = {
-	counter : 0
-}
-
-// let objectCounterFirstPage  = [];
-
-let objectCounterSecondPage  = {
-	counter : 0
-}
-let objectCounterThirdPage  = {
-	counter : 0
-}
-
-
-let firstPageVisitsCount = document.getElementById("visit-count1");
-let secondPageVisitsCount = document.getElementById("visit-count2");
-let thirdPageVisitsCount = document.getElementById("visit-count3");
-
-// objectCounterFirstPage.counter += 1;
-function changeObj(obj) {
-	
-	obj.counter += 21
-	return obj
-}
 
 
 
-addEventListener('pageshow', changeObj(objectCounterFirstPage));
 
-console.log(objectCounterFirstPage.counter)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //   Listener bazovui
@@ -64,22 +61,15 @@ console.log(objectCounterFirstPage.counter)
 // 	return objectCounterFirstPage.counter;
 // });
 
-
-// console.log(objectCounterFirstPage);
-
-addEventListener('pageshow', (e) => {
-	if (secondPageVisitsCount != null){
-		// console.log("Vlad")
-		secondPageVisitsCount.innerHTML = "Vlad"
-	}
+// addEventListener('pageshow', (e) => {
+// 	if (secondPageVisitsCount != null){
+// 		// console.log("Vlad")
+// 		secondPageVisitsCount.innerHTML = "Vlad"
+// 	}
 	
-});
-addEventListener('pageshow', (e) => {
-	if (thirdPageVisitsCount != null){
-		thirdPageVisitsCount.innerHTML = "Vlad"
-	}
-});
-
-
-
-// console.log(v)
+// });
+// addEventListener('pageshow', (e) => {
+// 	if (thirdPageVisitsCount != null){
+// 		thirdPageVisitsCount.innerHTML = "Vlad"
+// 	}
+// });
