@@ -12,7 +12,7 @@ const pipe = (value, ...funcs) => {
 		}
 		return value;
 	} catch (e){
-		return "Provided argument at position 2 is not a function!";
+		return 'Provided argument at position 2 is not a function!';
 	}
 };
 
