@@ -22,10 +22,6 @@ const pipe = (value, ...funcs) => {
 
 };
 
-// let testFunction = (value) => value + "hoh";
-
-
-
 const replaceUnderscoreWithSpace = (value) => value.replace(/_/g, ' ');
 const capitalize = (value) =>
 	value
@@ -34,9 +30,8 @@ const capitalize = (value) =>
 		.join(' ');
 const appendGreeting = (value) => `Hello, ${value}!`;
 
-// console.log(replaceUnderscoreWithSpace(testValue))
+const result = pipe("vlad_sherstiuk", replaceUnderscoreWithSpace, capitalize, appendGreeting)
 
-const result = pipe(testValue, replaceUnderscoreWithSpace, capitalize, appendGreeting)
 alert(result);
 
 // const error = pipe('john_doe', replaceUnderscoreWithSpace, capitalize, '');
