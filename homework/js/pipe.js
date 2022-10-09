@@ -1,18 +1,43 @@
+
+//		Цю функцію ми походу модернізуємо, для того щоб вона перевіряла чи передані функції є дійсно функціями, а якщо ні - має видавати ерор
+
 // function isFunction(functionToCheck) {
 // 	return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
 // }
 
+let testValue = "vlad_sherstiuk";
+
 const pipe = (value, ...funcs) => {
-	// PIPE implementation
+
+	// console.log(funcs);
+	// console.log(funcs[0](value));
+
+	// funcs[0](value);
+
+	for (let i = 0; i < funcs.length; i++){
+		value = funcs[i](value);
+	}
+	return value;
+	// console.log(value);
+
 };
 
-// const replaceUnderscoreWithSpace = (value) => value.replace(/_/g, ' ');
-// const capitalize = (value) =>
-// 	value
-// 		.split(' ')
-// 		.map((val) => val.charAt(0).toUpperCase() + val.slice(1))
-// 		.join(' ');
-// const appendGreeting = (value) => `Hello, ${value}!`;
+// let testFunction = (value) => value + "hoh";
+
+
+
+const replaceUnderscoreWithSpace = (value) => value.replace(/_/g, ' ');
+const capitalize = (value) =>
+	value
+		.split(' ')
+		.map((val) => val.charAt(0).toUpperCase() + val.slice(1))
+		.join(' ');
+const appendGreeting = (value) => `Hello, ${value}!`;
+
+// console.log(replaceUnderscoreWithSpace(testValue))
+
+const result = pipe(testValue, replaceUnderscoreWithSpace, capitalize, appendGreeting)
+alert(result);
 
 // const error = pipe('john_doe', replaceUnderscoreWithSpace, capitalize, '');
 
