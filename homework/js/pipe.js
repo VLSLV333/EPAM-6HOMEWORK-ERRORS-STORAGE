@@ -5,21 +5,15 @@
 // 	return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
 // }
 
-let testValue = "vlad_sherstiuk";
-
 const pipe = (value, ...funcs) => {
-
-	// console.log(funcs);
-	// console.log(funcs[0](value));
-
-	// funcs[0](value);
-
-	for (let i = 0; i < funcs.length; i++){
-		value = funcs[i](value);
+	try{
+		for (let i = 0; i < funcs.length; i++){
+			value = funcs[i](value);
+		}
+		return value;
+	} catch (e){
+		return "Provided argument at position 2 is not a function!";
 	}
-	return value;
-	// console.log(value);
-
 };
 
 const replaceUnderscoreWithSpace = (value) => value.replace(/_/g, ' ');
@@ -29,10 +23,6 @@ const capitalize = (value) =>
 		.map((val) => val.charAt(0).toUpperCase() + val.slice(1))
 		.join(' ');
 const appendGreeting = (value) => `Hello, ${value}!`;
-
-const result = pipe("vlad_sherstiuk", replaceUnderscoreWithSpace, capitalize, appendGreeting)
-
-alert(result);
 
 // const error = pipe('john_doe', replaceUnderscoreWithSpace, capitalize, '');
 
