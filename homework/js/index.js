@@ -23,6 +23,7 @@ addEventListener('pageshow', visitLink());
 
 // localStorage.clear();
 function viewResults() {
+
 	if (localStorage.length > 0){
 		let firstPageVisitsCount = JSON.parse(localStorage.getItem("visits-first-page")) || {counter : 0};
 		let secondPageVisitsCount = JSON.parse(localStorage.getItem("visits-second-page")) || {counter : 0};
@@ -38,24 +39,83 @@ function viewResults() {
 		let li3 = document.createElement("li");
 		li3.setAttribute("id","li3")
 
-		let li1Text = document.createTextNode(`You visited Page 1 ${firstPageVisitsCount.counter} time(s)`);
-		let li2Text = document.createTextNode(`You visited Page 2 ${secondPageVisitsCount.counter} time(s)`);
-		let li3Text = document.createTextNode(`You visited Page 3 ${thirdPageVisitsCount.counter} time(s)`);
+		let li1Text = document.createTextNode(`You have visited Page 1 ${firstPageVisitsCount.counter} time(s)`);
+		let li2Text = document.createTextNode(`You have visited Page 2 ${secondPageVisitsCount.counter} time(s)`);
+		let li3Text = document.createTextNode(`You have visited Page 3 ${thirdPageVisitsCount.counter} time(s)`);
 
-		li1.append(li1Text);
-		li2.append(li2Text);
-		li3.append(li3Text);
-		ul.append(li1,li2,li3);
-		document.body.append(ul);
-		localStorage.clear()
+		// console.log(document.getElementById("ul"));
+
+		if (document.getElementById("ul") === null){ 		// потрібно змінити цю умову. МОже айді селектором спробувати звернутись до одного з елементів лі, перевірити чи він є?
+			console.log("другий іф")
+			li1.append(li1Text);
+			li2.append(li2Text);
+			li3.append(li3Text);
+			ul.append(li1,li2,li3);
+			document.body.append(ul);
+			localStorage.clear()
+		} else {
+			console.log("Елс в другому іфі")
+
+			let li1 = document.getElementById('li1')
+			let li2 = document.getElementById('li2')
+			let li3 = document.getElementById('li3')
+
+			let firstPageVisitsCount = JSON.parse(localStorage.getItem("visits-first-page")) || {counter : 0};
+			let secondPageVisitsCount = JSON.parse(localStorage.getItem("visits-second-page")) || {counter : 0};
+			let thirdPageVisitsCount = JSON.parse(localStorage.getItem("visits-third-page")) || {counter : 0};
+
+			li1.innerHTML =`You have visited Page 1 ${firstPageVisitsCount.counter} time(s)`;
+			li2.innerHTML =`You have visited Page 2 ${secondPageVisitsCount.counter} time(s)`;
+			li3.innerHTML =`You have visited Page 3 ${thirdPageVisitsCount.counter} time(s)`;
+			
+			localStorage.clear()
+
+
+			// let innerHtmlCounter1 = "" + firstPageVisitsCount.counter;
+			// let innerHtmlCounter2 = "" + secondPageVisitsCount.counter;
+			// let innerHtmlCounter3 = "" + thirdPageVisitsCount.counter;
+
+			// li1.innerHTML ="You visited Page 1 " + innerHtmlCounter1 + " time(s)";
+			// li2.innerHTML ="You visited Page 2 " + innerHtmlCounter2 + " time(s)";
+			// li3.innerHTML ="You visited Page 3 " + innerHtmlCounter3 + " time(s)";
+		}
+		
 	} else {
-		console.log("Vlad");
+		console.log("Елс в першому основному іфі");
 
 		// let ul = document.querySelector("#ul")
 
-		let li1 = document.querySelector("#li1")
-		let li2 = document.querySelector("#li2")
-		let li3 = document.querySelector("#li3")
+		let li1 = document.getElementById('li1')
+		let li2 = document.getElementById('li2')
+		let li3 = document.getElementById('li3')
+
+		console.log(li1)
+		console.log(li2)
+		console.log(li3)
+		if (li1 === null || li2 === null || li3 === null){
+			let ul = document.createElement("ul");
+			ul.setAttribute("id","ul")
+
+			let li1 = document.createElement("li");
+			li1.setAttribute("id","li1")
+			let li2 = document.createElement("li");
+			li2.setAttribute("id","li2")
+			let li3 = document.createElement("li");
+			li3.setAttribute("id","li3")
+
+			li1.innerHTML ='You have visited Page 1 0 times';
+			li2.innerHTML ='You have visited Page 2 0 times';
+			li3.innerHTML ='You have visited Page 3 0 times';
+
+			ul.append(li1,li2,li3);
+			document.body.append(ul);
+			localStorage.clear()
+			return
+		};
+
+		li1.innerHTML ='You have visited Page 1 0 times';
+		li2.innerHTML ='You have visited Page 2 0 times';
+		li3.innerHTML ='You have visited Page 3 0 times';
 
 		// ul.remove();
 		// let firstPageVisitsCount = JSON.parse(localStorage.getItem("visits-first-page")) || {counter : 0};
@@ -68,13 +128,16 @@ function viewResults() {
 		// let li2 = document.createElement("li");
 		// let li3 = document.createElement("li");
 
-		let li4Text = document.createTextNode(`You visited Page 1 0 time(s)`);
-		let li5Text = document.createTextNode(`You visited Page 2 0 time(s)`);
-		let li6Text = document.createTextNode(`You visited Page 3 0 time(s)`);
 
-		li1.replaceWith(li4Text)
-		li2.replaceWith(li5Text)
-		li3.replaceWith(li6Text)
+		// let li4Text = document.createTextNode(`You visited Page 1 0 time(s)`);
+		// let li5Text = document.createTextNode(`You visited Page 2 0 time(s)`);
+		// let li6Text = document.createTextNode(`You visited Page 3 0 time(s)`);
+
+		// li1.replaceWith(li4Text)
+		// li2.replaceWith(li5Text)
+		// li3.replaceWith(li6Text)
+
+
 		// ul.append(li1,li2,li3);
 	}
 	
